@@ -2,31 +2,29 @@ import json
 
 
 def filter_users_by_name(name):
-    """Filtert die Nutzerliste nach Name (case-insensitive)."""
+    """Filter users list by name (case-insensitive)."""
     with open("users.json", "r") as file:
-        users = json.load(file)
+        users_list = json.load(file)
 
-    filtered_users = [user for user in users if user["name"].lower() == name.lower()]
+    filtered_users = [user for user in users_list if user["name"].lower() == name.lower()]
 
     for user in filtered_users:
         print(user)
 
 
 def filter_users_by_email(domain):
-    """Filtert die Nutzerliste nach E-Mail-Domain."""
+    """Filter users list by email domain."""
     with open("users.json", "r") as file:
-        users = json.load(file)
+        users_list = json.load(file)
 
-    filtered_users = [user for user in users if user["email"].endswith(domain)]
+    filtered_users = [user for user in users_list if user["email"].endswith(domain)]
 
     for user in filtered_users:
         print(user)
 
 
 if __name__ == "__main__":
-    filter_option = input(
-        "What would you like to filter by? (name/email): "
-    ).strip().lower()
+    filter_option = input("What would you like to filter by? (name/email): ").strip().lower()
 
     if filter_option == "name":
         name_to_search = input("Enter a name to filter users: ").strip()
